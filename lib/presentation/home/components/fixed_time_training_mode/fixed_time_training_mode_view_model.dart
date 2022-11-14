@@ -1,3 +1,4 @@
+import '../../../../generated/l10n.dart';
 import '../../../components/components.dart';
 
 FixedTimeTrainingModeViewModel fixedTimeTrainingModeViewModelFactory(
@@ -20,16 +21,17 @@ abstract class FixedTimeTrainingModeViewModel extends ViewModel{
 class _FixedTimeTrainingModeViewModelImpl implements FixedTimeTrainingModeViewModel {
   _FixedTimeTrainingModeViewModelImpl(this._context);
 
+  final BuildContext _context;
+
   @override
-  final String wantLabel = 'ХОЧУ';
+  late final String wantLabel = S.of(_context).wantLabel;
   @override
-  final String pushUpFixedTimedLabel = 'ОТЖИМАТЬСЯ';
+  late final String pushUpFixedTimedLabel = S.of(_context).pushUpFixedTimedLabel;
   @override
   final String fixedTimeLabel = '30:20';
   @override
-  final String minutesLabel = 'МИНУТ';
+  late final String minutesLabel = S.of(_context).minutesLabel;
 
-  final BuildContext _context;
   int _fixedCountCount = 5;
 
   @override

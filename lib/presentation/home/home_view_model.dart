@@ -38,7 +38,7 @@ abstract class HomeViewModel extends ViewModel {
 
   // String get staminaLabel;
   //
-  String get statisticsLabel;
+  String get statisticsLabel ;
 
   PageController get controller;
 
@@ -58,57 +58,16 @@ class _HomeViewModelImpl implements HomeViewModel {
 
   @override
   final String backgroundImageAsset = 'assets/images/push_ups.jpg';
-  // @override
-  // late final String trainingProgramLabel = S.of(_context).trainingProgramLabel;
-  // @override
-  // final String wantLabel = 'ХОЧУ';
-  // @override
-  // final String pushUpFixedCountLabel = 'ОТЖАТЬСЯ';
-  // @override
-  // final String fixedCountLabel = '25';
-  // @override
-  // final String countLabel = 'РАЗ';
-  // @override
-  // final String pushUpFixedTimedLabel = 'ОТЖИМАТЬСЯ';
-  // @override
-  // final String fixedTimeLabel = '30:20';
-  // @override
-  // final String minutesLabel = 'МИНУТ';
-  // @override
-  // final String approachesPart1Label = 'В НЕСКОЛЬКО ПОДХОДОВ';
-  // @override
-  // final String approachesPart2Label = 'ПОДХОДОВ';
-  // @override
-  // final String countApproachesLabel = '2';
-  // @override
-  // final String approachLabel = 'ПОДХОДА';
-  // @override
-  // final String timeBetweenApproachesLabel = '1:00';
-  // @override
-  // final String restLabel = 'ОТДЫХ';
-  // @override
-  // final String staminaLabel = 'НА ВЫНОСЛИВОСТь';
+
+  final BuildContext _context;
   @override
-  final String statisticsLabel = 'СТАТИСТИКА';
+  late final String statisticsLabel = S.of(_context).statisticsLabel;
 
   @override
   final PageController controller = PageController();
 
-  final BuildContext _context;
-  // int _fixedCountCount = 5;
-
   @override
   void onNotificationButtonPressed() {}
-
-  // @override
-  // void onMinusButtonPressed() {
-  //   _fixedCountCount--;
-  // }
-  //
-  // @override
-  // void onPlusButtonPressed() {
-  //   _fixedCountCount++;
-  // }
 
   @override
   void onStartButtonPressed() {}

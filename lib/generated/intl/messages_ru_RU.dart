@@ -22,7 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "approachLabel": MessageLookupByLibrary.simpleMessage("ПОДХОДА"),
+        "approachesPart1Label":
+            MessageLookupByLibrary.simpleMessage("В НЕСКОЛЬКО ПОДХОДОВ"),
+        "approachesPart2Label":
+            MessageLookupByLibrary.simpleMessage("ПОДХОДОВ"),
+        "countLabel": MessageLookupByLibrary.simpleMessage("РАЗ"),
+        "minutesLabel": MessageLookupByLibrary.simpleMessage("МИНУТ"),
+        "pushUpFixedTimedLabel":
+            MessageLookupByLibrary.simpleMessage("ОТЖИМАТЬСЯ"),
+        "restLabel": MessageLookupByLibrary.simpleMessage("ОТДЫХ"),
+        "staminaLabel": MessageLookupByLibrary.simpleMessage("НА ВЫНОСЛИВОСТь"),
+        "statisticsLabel": MessageLookupByLibrary.simpleMessage("СТАТИСТИКА"),
         "trainingProgramLabel":
-            MessageLookupByLibrary.simpleMessage("Программа Тренировок")
+            MessageLookupByLibrary.simpleMessage("Программа Тренировок"),
+        "wantLabel": MessageLookupByLibrary.simpleMessage("ХОЧУ")
       };
 }

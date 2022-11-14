@@ -1,3 +1,4 @@
+import '../../../../generated/l10n.dart';
 import '../../../components/components.dart';
 
 ApproachesTrainingModeViewModel approachesTrainingModeViewModelFactory(
@@ -32,19 +33,19 @@ class _ApproachesTrainingModeViewModelImpl implements ApproachesTrainingModeView
   @override
   final String fixedCountLabel = '25';
   @override
-  final String countLabel = 'РАЗ';
+  late final String countLabel = S.of(_context).countLabel;
   @override
-  final String approachesPart1Label = 'В НЕСКОЛЬКО ПОДХОДОВ';
+  late final String approachesPart1Label = S.of(_context).approachesPart1Label;
   @override
-  final String approachesPart2Label = 'ПОДХОДОВ';
+  late final String approachesPart2Label = S.of(_context).approachesPart2Label;
   @override
   final String countApproachesLabel = '2';
   @override
-  final String approachLabel = 'ПОДХОДА';
+  late final String approachLabel = S.of(_context).approachLabel;
   @override
   final String timeBetweenApproachesLabel = '1:00';
   @override
-  final String restLabel = 'ОТДЫХ';
+  late final String restLabel = S.of(_context).restLabel;
 
   final BuildContext _context;
   int _fixedCountCount = 5;

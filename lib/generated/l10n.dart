@@ -59,6 +59,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Statistics`
+  String get statisticsLabel {
+    return Intl.message(
+      'Statistics',
+      name: 'statisticsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WANT`
+  String get wantLabel {
+    return Intl.message(
+      'WANT',
+      name: 'wantLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TO PUSH UP`
+  String get pushUpFixedTimedLabel {
+    return Intl.message(
+      'TO PUSH UP',
+      name: 'pushUpFixedTimedLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FOR ENDURANCE`
+  String get staminaLabel {
+    return Intl.message(
+      'FOR ENDURANCE',
+      name: 'staminaLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MINUTES`
+  String get minutesLabel {
+    return Intl.message(
+      'MINUTES',
+      name: 'minutesLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TIMES`
+  String get countLabel {
+    return Intl.message(
+      'TIMES',
+      name: 'countLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IN MULTIPLE APPROACHES`
+  String get approachesPart1Label {
+    return Intl.message(
+      'IN MULTIPLE APPROACHES',
+      name: 'approachesPart1Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `APPROACHES`
+  String get approachesPart2Label {
+    return Intl.message(
+      'APPROACHES',
+      name: 'approachesPart2Label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `APPROACH`
+  String get approachLabel {
+    return Intl.message(
+      'APPROACH',
+      name: 'approachLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REST`
+  String get restLabel {
+    return Intl.message(
+      'REST',
+      name: 'restLabel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,3 +1,13 @@
 {
-  "trainingProgramLabel": "Training Program"
+  "trainingProgramLabel": "Training Program",
+  "statisticsLabel": "Statistics",
+  "wantLabel": "WANT",
+  "pushUpFixedTimedLabel": "TO PUSH UP",
+  "staminaLabel": "FOR ENDURANCE",
+  "minutesLabel": "MINUTES",
+  "countLabel": "TIMES",
+  "approachesPart1Label": "IN MULTIPLE APPROACHES",
+  "approachesPart2Label": "APPROACHES",
+  "approachLabel": "APPROACH",
+  "restLabel": "REST"
 }

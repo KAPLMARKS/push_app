@@ -1,3 +1,4 @@
+import '../../../../generated/l10n.dart';
 import '../../../components/components.dart';
 
 FixedCountTrainingModeViewModel fixedCountTrainingModeViewModelFactory(
@@ -21,16 +22,17 @@ abstract class FixedCountTrainingModeViewModel extends ViewModel {
 class _FixedCountTrainingModeViewModelImpl implements FixedCountTrainingModeViewModel {
   _FixedCountTrainingModeViewModelImpl(this._context);
 
+  final BuildContext _context;
+
   @override
-  final String wantLabel = 'ХОЧУ';
+  late final String wantLabel = S.of(_context).wantLabel;
   @override
-  final String pushUpFixedCountLabel = 'ОТЖАТЬСЯ';
+  late final String pushUpFixedCountLabel = S.of(_context).pushUpFixedTimedLabel;
   @override
   final String fixedCountLabel = '25';
   @override
-  final String countLabel = 'РАЗ';
+  late final String countLabel = S.of(_context).countLabel;
 
-  final BuildContext _context;
   int _fixedCountCount = 5;
 
   @override

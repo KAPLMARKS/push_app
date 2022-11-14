@@ -1,3 +1,13 @@
 {
-  "trainingProgramLabel": "Программа Тренировок"
+  "trainingProgramLabel": "Программа Тренировок",
+  "statisticsLabel": "СТАТИСТИКА",
+  "wantLabel": "ХОЧУ",
+  "pushUpFixedTimedLabel": "ОТЖИМАТЬСЯ",
+  "staminaLabel": "НА ВЫНОСЛИВОСТь",
+  "minutesLabel": "МИНУТ",
+  "countLabel": "РАЗ",
+  "approachesPart1Label": "В НЕСКОЛЬКО ПОДХОДОВ",
+  "approachesPart2Label": "ПОДХОДОВ",
+  "approachLabel": "ПОДХОДА",
+  "restLabel": "ОТДЫХ"
 }
