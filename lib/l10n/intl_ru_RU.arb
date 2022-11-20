@@ -1,13 +1,28 @@
 {
+  "@@locale": "ru",
   "trainingProgramLabel": "Программа Тренировок",
+  "@trainingProgramLabel": {
+    "description": "Это программа тренировок"
+  },
   "statisticsLabel": "СТАТИСТИКА",
   "wantLabel": "ХОЧУ",
   "pushUpFixedTimedLabel": "ОТЖИМАТЬСЯ",
   "staminaLabel": "НА ВЫНОСЛИВОСТь",
   "minutesLabel": "МИНУТ",
   "countLabel": "РАЗ",
+  "countLabelWithParameter": "{count}\nРАЗ",
+  "@countLabelWithParameter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "approachesPart1Label": "В НЕСКОЛЬКО ПОДХОДОВ",
-  "approachesPart2Label": "ПОДХОДОВ",
   "approachLabel": "ПОДХОДА",
-  "restLabel": "ОТДЫХ"
+  "restLabel": "ОТДЫХ",
+  "fixedTimeLabel": "10:00",
+  "pushUpFixedCountLabel": "10",
+  "countApproachesLabel": "2",
+  "timeBetweenApproachesLabel": "1:00"
 }

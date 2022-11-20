@@ -8,7 +8,7 @@ class PlanTrainingModeView extends View<PlanTrainingModeViewModel> {
   @override
   Widget build(BuildContext context, PlanTrainingModeViewModel viewModel) {
     return Center(
-      child: Text(viewModel.trainingProgramLabel),
+      child: Text(viewModel.trainingProgramLabel(context)),
     );
   }
 }

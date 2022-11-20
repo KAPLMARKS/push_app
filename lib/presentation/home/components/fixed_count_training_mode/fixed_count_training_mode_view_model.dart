@@ -3,16 +3,16 @@ import '../../../components/components.dart';
 
 FixedCountTrainingModeViewModel fixedCountTrainingModeViewModelFactory(
         BuildContext context) =>
-    _FixedCountTrainingModeViewModelImpl(context);
+    _FixedCountTrainingModeViewModelImpl();
 
 abstract class FixedCountTrainingModeViewModel extends ViewModel {
-  String get wantLabel;
+  String wantLabel(BuildContext context);
 
-  String get pushUpFixedCountLabel;
+  String pushUpFixedCountLabel(BuildContext context);
 
-  String get fixedCountLabel;
+  String fixedCountLabel(BuildContext context);
 
-  String get countLabel;
+  String countLabel(BuildContext context);
 
   void onMinusButtonPressed();
 
@@ -20,18 +20,27 @@ abstract class FixedCountTrainingModeViewModel extends ViewModel {
 }
 
 class _FixedCountTrainingModeViewModelImpl implements FixedCountTrainingModeViewModel {
-  _FixedCountTrainingModeViewModelImpl(this._context);
-
-  final BuildContext _context;
+  _FixedCountTrainingModeViewModelImpl();
 
   @override
-  late final String wantLabel = S.of(_context).wantLabel;
+  String countLabel(BuildContext context) {
+    return S.of(context).countLabel;
+  }
+
   @override
-  late final String pushUpFixedCountLabel = S.of(_context).pushUpFixedTimedLabel;
+  String fixedCountLabel(BuildContext context) {
+    return S.of(context).fixedTimeLabel;
+  }
+
   @override
-  final String fixedCountLabel = '25';
+  String pushUpFixedCountLabel(BuildContext context) {
+    return S.of(context).pushUpFixedCountLabel;
+  }
+
   @override
-  late final String countLabel = S.of(_context).countLabel;
+  String wantLabel(BuildContext context) {
+    return S.of(context).wantLabel;
+  }
 
   int _fixedCountCount = 5;
 

@@ -3,18 +3,18 @@ import '../../../components/components.dart';
 
 PlanTrainingModeViewModel planTrainingModeViewModelFactory(
     BuildContext context) =>
-    _PlanTrainingModeViewModelImpl(context);
+    _PlanTrainingModeViewModelImpl();
 abstract class PlanTrainingModeViewModel extends ViewModel {
-  String get trainingProgramLabel;
+  String trainingProgramLabel(BuildContext context);
 }
 
 class _PlanTrainingModeViewModelImpl implements PlanTrainingModeViewModel {
-  _PlanTrainingModeViewModelImpl(this._context);
-
-  final BuildContext _context;
+  _PlanTrainingModeViewModelImpl();
 
   @override
-  late final String trainingProgramLabel = S.of(_context).trainingProgramLabel;
+  String trainingProgramLabel(BuildContext context) {
+    return S.of(context).trainingProgramLabel;
+  }
 
   @override
   void dispose() {

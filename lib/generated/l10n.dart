@@ -50,111 +50,151 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Training Program`
+  /// `Программа Тренировок`
   String get trainingProgramLabel {
     return Intl.message(
-      'Training Program',
+      'Программа Тренировок',
       name: 'trainingProgramLabel',
-      desc: '',
+      desc: 'Это программа тренировок',
       args: [],
     );
   }
 
-  /// `Statistics`
+  /// `СТАТИСТИКА`
   String get statisticsLabel {
     return Intl.message(
-      'Statistics',
+      'СТАТИСТИКА',
       name: 'statisticsLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `WANT`
+  /// `ХОЧУ`
   String get wantLabel {
     return Intl.message(
-      'WANT',
+      'ХОЧУ',
       name: 'wantLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `TO PUSH UP`
+  /// `ОТЖИМАТЬСЯ`
   String get pushUpFixedTimedLabel {
     return Intl.message(
-      'TO PUSH UP',
+      'ОТЖИМАТЬСЯ',
       name: 'pushUpFixedTimedLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `FOR ENDURANCE`
+  /// `НА ВЫНОСЛИВОСТь`
   String get staminaLabel {
     return Intl.message(
-      'FOR ENDURANCE',
+      'НА ВЫНОСЛИВОСТь',
       name: 'staminaLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `MINUTES`
+  /// `МИНУТ`
   String get minutesLabel {
     return Intl.message(
-      'MINUTES',
+      'МИНУТ',
       name: 'minutesLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `TIMES`
+  /// `РАЗ`
   String get countLabel {
     return Intl.message(
-      'TIMES',
+      'РАЗ',
       name: 'countLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `IN MULTIPLE APPROACHES`
+  /// `{count}\nРАЗ`
+  String countLabelWithParameter(int count) {
+    return Intl.message(
+      '$count\nРАЗ',
+      name: 'countLabelWithParameter',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `В НЕСКОЛЬКО ПОДХОДОВ`
   String get approachesPart1Label {
     return Intl.message(
-      'IN MULTIPLE APPROACHES',
+      'В НЕСКОЛЬКО ПОДХОДОВ',
       name: 'approachesPart1Label',
       desc: '',
       args: [],
     );
   }
 
-  /// `APPROACHES`
-  String get approachesPart2Label {
-    return Intl.message(
-      'APPROACHES',
-      name: 'approachesPart2Label',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `APPROACH`
+  /// `ПОДХОДА`
   String get approachLabel {
     return Intl.message(
-      'APPROACH',
+      'ПОДХОДА',
       name: 'approachLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `REST`
+  /// `ОТДЫХ`
   String get restLabel {
     return Intl.message(
-      'REST',
+      'ОТДЫХ',
       name: 'restLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10:00`
+  String get fixedTimeLabel {
+    return Intl.message(
+      '10:00',
+      name: 'fixedTimeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10`
+  String get pushUpFixedCountLabel {
+    return Intl.message(
+      '10',
+      name: 'pushUpFixedCountLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2`
+  String get countApproachesLabel {
+    return Intl.message(
+      '2',
+      name: 'countApproachesLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1:00`
+  String get timeBetweenApproachesLabel {
+    return Intl.message(
+      '1:00',
+      name: 'timeBetweenApproachesLabel',
       desc: '',
       args: [],
     );
@@ -166,7 +206,6 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ru', countryCode: 'RU'),
     ];
   }

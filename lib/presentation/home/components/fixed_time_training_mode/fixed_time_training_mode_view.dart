@@ -10,8 +10,8 @@ class FixedTimeTrainingModeView extends View<FixedTimeTrainingModeViewModel> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(viewModel.wantLabel),
-        Text(viewModel.pushUpFixedTimedLabel),
+        Text(viewModel.wantLabel(context)),
+        Text(viewModel.pushUpFixedTimedLabel(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +24,7 @@ class FixedTimeTrainingModeView extends View<FixedTimeTrainingModeViewModel> {
                 size: 16,
               ),
             ),
-            Text(viewModel.fixedTimeLabel),
+            Text(viewModel.fixedTimeLabel(context)),
             BlurredButton(
               borderRadius: BorderRadius.circular(64),
               padding: const EdgeInsets.all(5),
@@ -36,7 +36,7 @@ class FixedTimeTrainingModeView extends View<FixedTimeTrainingModeViewModel> {
             ),
           ],
         ),
-        Text(viewModel.minutesLabel),
+        Text(viewModel.minutesLabel(context)),
       ],
     );
   }

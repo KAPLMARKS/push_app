@@ -10,8 +10,8 @@ class FixedCountTrainingModeView extends View<FixedCountTrainingModeViewModel> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(viewModel.wantLabel),
-        Text(viewModel.pushUpFixedCountLabel),
+        Text(viewModel.wantLabel(context)),
+        Text(viewModel.pushUpFixedCountLabel(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +24,7 @@ class FixedCountTrainingModeView extends View<FixedCountTrainingModeViewModel> {
                 size: 16,
               ),
             ),
-            Text(viewModel.fixedCountLabel),
+            Text(viewModel.fixedCountLabel(context)),
             BlurredButton(
               borderRadius: BorderRadius.circular(64),
               padding: const EdgeInsets.all(5),
@@ -36,7 +36,7 @@ class FixedCountTrainingModeView extends View<FixedCountTrainingModeViewModel> {
             ),
           ],
         ),
-        Text(viewModel.countLabel),
+        Text(viewModel.countLabel(context)),
       ],
     );
   }

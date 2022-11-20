@@ -3,24 +3,24 @@ import '../../../components/components.dart';
 
 ApproachesTrainingModeViewModel approachesTrainingModeViewModelFactory(
         BuildContext context) =>
-    _ApproachesTrainingModeViewModelImpl(context);
+    _ApproachesTrainingModeViewModelImpl();
 
 abstract class ApproachesTrainingModeViewModel extends ViewModel {
-  String get fixedCountLabel;
+  String countLabelWithParameter(BuildContext context);
 
-  String get countLabel;
+  String fixedCountLabel(BuildContext context);
 
-  String get approachesPart1Label;
+  String countLabel(BuildContext context);
 
-  String get approachesPart2Label;
+  String approachesPart1Label(BuildContext context);
 
-  String get countApproachesLabel;
+  String countApproachesLabel(BuildContext context);
 
-  String get approachLabel;
+  String approachLabel(BuildContext context);
 
-  String get timeBetweenApproachesLabel;
+  String timeBetweenApproachesLabel(BuildContext context);
 
-  String get restLabel;
+  String restLabel(BuildContext context);
 
   void onMinusButtonPressed();
 
@@ -28,26 +28,48 @@ abstract class ApproachesTrainingModeViewModel extends ViewModel {
 }
 
 class _ApproachesTrainingModeViewModelImpl implements ApproachesTrainingModeViewModel {
-  _ApproachesTrainingModeViewModelImpl(this._context);
+  _ApproachesTrainingModeViewModelImpl();
 
   @override
-  final String fixedCountLabel = '25';
-  @override
-  late final String countLabel = S.of(_context).countLabel;
-  @override
-  late final String approachesPart1Label = S.of(_context).approachesPart1Label;
-  @override
-  late final String approachesPart2Label = S.of(_context).approachesPart2Label;
-  @override
-  final String countApproachesLabel = '2';
-  @override
-  late final String approachLabel = S.of(_context).approachLabel;
-  @override
-  final String timeBetweenApproachesLabel = '1:00';
-  @override
-  late final String restLabel = S.of(_context).restLabel;
+  String approachLabel(BuildContext context) {
+    return S.of(context).approachLabel;
+  }
 
-  final BuildContext _context;
+  @override
+  String approachesPart1Label(BuildContext context) {
+    return S.of(context).approachesPart1Label;
+  }
+
+  @override
+  String countApproachesLabel(BuildContext context) {
+    return S.of(context).countApproachesLabel;
+  }
+
+  @override
+  String countLabel(BuildContext context) {
+    return S.of(context).countLabel;
+  }
+
+  @override
+  String countLabelWithParameter(BuildContext context) {
+    return S.of(context).countLabelWithParameter(10);
+  }
+
+  @override
+  String fixedCountLabel(BuildContext context) {
+    return S.of(context).fixedTimeLabel;
+  }
+
+  @override
+  String restLabel(BuildContext context) {
+    return S.of(context).restLabel;
+  }
+
+  @override
+  String timeBetweenApproachesLabel(BuildContext context) {
+    return S.of(context).timeBetweenApproachesLabel;
+  }
+
   int _fixedCountCount = 5;
 
   @override

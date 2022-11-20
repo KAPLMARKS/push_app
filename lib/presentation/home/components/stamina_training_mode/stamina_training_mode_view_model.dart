@@ -3,27 +3,32 @@ import '../../../components/components.dart';
 
 StaminaTrainingModeViewModel staminaTrainingModeViewModelFactory(
     BuildContext context) =>
-    _StaminaTrainingModeViewModelImpl(context);
+    _StaminaTrainingModeViewModelImpl();
 abstract class StaminaTrainingModeViewModel extends ViewModel {
-  String get wantLabel;
+  String wantLabel(BuildContext context);
 
-  String get pushUpFixedTimedLabel;
+  String pushUpFixedTimedLabel(BuildContext context);
 
-  String get staminaLabel;
+  String staminaLabel(BuildContext context);
 }
 
 class _StaminaTrainingModeViewModelImpl implements StaminaTrainingModeViewModel {
-  _StaminaTrainingModeViewModelImpl(this._context);
-
-  final BuildContext _context;
+  _StaminaTrainingModeViewModelImpl();
 
   @override
-  late final String wantLabel = S.of(_context).wantLabel;
-  @override
-  late final String pushUpFixedTimedLabel = S.of(_context).pushUpFixedTimedLabel;
+  String pushUpFixedTimedLabel(BuildContext context) {
+    return S.of(context).pushUpFixedTimedLabel;
+  }
 
   @override
-  late final String staminaLabel = S.of(_context).staminaLabel;
+  String staminaLabel(BuildContext context) {
+    return S.of(context).staminaLabel;
+  }
+
+  @override
+  String wantLabel(BuildContext context) {
+    return S.of(context).wantLabel;
+  }
 
   @override
   void dispose() {

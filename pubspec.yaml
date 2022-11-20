@@ -29,5 +29,7 @@ flutter:
     - assets/images/
 
   uses-material-design: true
+
 flutter_intl:
   enabled: true
+  main_locale: ru_RU

@@ -25,8 +25,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "approachLabel": MessageLookupByLibrary.simpleMessage("ПОДХОДА"),
         "approachesPart1Label":
             MessageLookupByLibrary.simpleMessage("В НЕСКОЛЬКО ПОДХОДОВ"),
-        "approachesPart2Label":
-            MessageLookupByLibrary.simpleMessage("ПОДХОДОВ"),
         "countLabel": MessageLookupByLibrary.simpleMessage("РАЗ"),
         "minutesLabel": MessageLookupByLibrary.simpleMessage("МИНУТ"),
         "pushUpFixedTimedLabel":

@@ -10,12 +10,12 @@ class StaminaTrainingModeView extends View<StaminaTrainingModeViewModel> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(viewModel.wantLabel),
-        Text(viewModel.pushUpFixedTimedLabel),
+        Text(viewModel.wantLabel(context)),
+        Text(viewModel.pushUpFixedTimedLabel(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(viewModel.staminaLabel),
+            Text(viewModel.staminaLabel(context)),
           ],
         ),
       ],

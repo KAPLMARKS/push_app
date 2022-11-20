@@ -11,15 +11,16 @@ class ApproachesTrainingModeView extends View<ApproachesTrainingModeViewModel> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(viewModel.approachesPart1Label),
-        Text(viewModel.approachesPart2Label),
+        Text(viewModel.approachesPart1Label(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               children: [
-                Text(viewModel.fixedCountLabel),
-                Text(viewModel.countLabel),
+                Text(
+                  viewModel.countLabelWithParameter(context),
+                  textAlign: TextAlign.center,
+                ),
                 Row(
                   children: [
                     BlurredButton(
@@ -45,8 +46,8 @@ class ApproachesTrainingModeView extends View<ApproachesTrainingModeViewModel> {
             const SizedBox(width: 16),
             Column(
               children: [
-                Text(viewModel.countApproachesLabel),
-                Text(viewModel.approachLabel),
+                Text(viewModel.countApproachesLabel(context)),
+                Text(viewModel.approachLabel(context)),
                 Row(
                   children: [
                     BlurredButton(
@@ -72,8 +73,8 @@ class ApproachesTrainingModeView extends View<ApproachesTrainingModeViewModel> {
             const SizedBox(width: 16),
             Column(
               children: [
-                Text(viewModel.timeBetweenApproachesLabel),
-                Text(viewModel.restLabel),
+                Text(viewModel.timeBetweenApproachesLabel(context)),
+                Text(viewModel.restLabel(context)),
                 Row(
                   children: [
                     BlurredButton(

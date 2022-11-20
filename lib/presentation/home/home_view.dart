@@ -126,7 +126,7 @@ class _StatisticsButton extends ViewComponent<HomeViewModel> {
           const SizedBox(
             width: 8,
           ),
-          Text(viewModel.statisticsLabel),
+          Text(viewModel.statisticsLabel(context)),
         ],
       ),
     );
