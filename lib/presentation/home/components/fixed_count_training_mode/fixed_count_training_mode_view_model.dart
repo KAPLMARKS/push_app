@@ -14,17 +14,24 @@ abstract class FixedCountTrainingModeViewModel extends ViewModel {
 
   String countLabel(BuildContext context);
 
+  TextEditingController get controller;
+
   void onMinusButtonPressed();
 
   void onPlusButtonPressed();
 }
 
-class _FixedCountTrainingModeViewModelImpl implements FixedCountTrainingModeViewModel {
-  _FixedCountTrainingModeViewModelImpl();
+class _FixedCountTrainingModeViewModelImpl
+    implements FixedCountTrainingModeViewModel {
+  _FixedCountTrainingModeViewModelImpl() {
+    controller.addListener(() {
+      _fixedCount = int.parse(controller.text);
+    });
+  }
 
   @override
   String countLabel(BuildContext context) {
-    return S.of(context).countLabel;
+    return S.of(context).countLabel(4);
   }
 
   @override
@@ -42,17 +49,17 @@ class _FixedCountTrainingModeViewModelImpl implements FixedCountTrainingModeView
     return S.of(context).wantLabel;
   }
 
-  int _fixedCountCount = 5;
+  @override
+  late TextEditingController controller =
+      TextEditingController(text: _fixedCount.toString());
+
+  int _fixedCount = 10;
 
   @override
-  void onMinusButtonPressed() {
-    _fixedCountCount--;
-  }
+  void onMinusButtonPressed() => controller.text = (_fixedCount--).toString();
 
   @override
-  void onPlusButtonPressed() {
-    _fixedCountCount++;
-  }
+  void onPlusButtonPressed() => controller.text = (_fixedCount++).toString();
 
   @override
   void dispose() {

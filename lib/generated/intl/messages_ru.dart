@@ -20,7 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
-  static String m0(count) => "${count}\nРАЗ";
+  static String m0(count) =>
+      "${Intl.plural(count, one: 'РАЗ', two: 'РАЗА', other: 'Отхер')}";
+
+  static String m1(count) => "${count}\nРАЗ";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -28,8 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "approachesPart1Label":
             MessageLookupByLibrary.simpleMessage("В НЕСКОЛЬКО ПОДХОДОВ"),
         "countApproachesLabel": MessageLookupByLibrary.simpleMessage("2"),
-        "countLabel": MessageLookupByLibrary.simpleMessage("РАЗ"),
-        "countLabelWithParameter": m0,
+        "countLabel": m0,
+        "countLabelWithParameter": m1,
         "fixedTimeLabel": MessageLookupByLibrary.simpleMessage("10:00"),
         "minutesLabel": MessageLookupByLibrary.simpleMessage("МИНУТ"),
         "pushUpFixedCountLabel": MessageLookupByLibrary.simpleMessage("10"),

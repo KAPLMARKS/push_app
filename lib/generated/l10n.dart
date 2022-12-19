@@ -110,16 +110,6 @@ class S {
     );
   }
 
-  /// `РАЗ`
-  String get countLabel {
-    return Intl.message(
-      'РАЗ',
-      name: 'countLabel',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `{count}\nРАЗ`
   String countLabelWithParameter(int count) {
     return Intl.message(
@@ -177,6 +167,19 @@ class S {
       name: 'pushUpFixedCountLabel',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `{count,plural, =1{РАЗ} =2{РАЗА} other{Отхер}}`
+  String countLabel(int count) {
+    return Intl.plural(
+      count,
+      one: 'РАЗ',
+      two: 'РАЗА',
+      other: 'Отхер',
+      name: 'countLabel',
+      desc: 'A plural message',
+      args: [count],
     );
   }
 

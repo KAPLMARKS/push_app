@@ -9,7 +9,6 @@
   "pushUpFixedTimedLabel": "ОТЖИМАТЬСЯ",
   "staminaLabel": "НА ВЫНОСЛИВОСТь",
   "minutesLabel": "МИНУТ",
-  "countLabel": "РАЗ",
   "countLabelWithParameter": "{count}\nРАЗ",
   "@countLabelWithParameter": {
     "placeholders": {
@@ -23,6 +22,16 @@
   "restLabel": "ОТДЫХ",
   "fixedTimeLabel": "10:00",
   "pushUpFixedCountLabel": "10",
+  "countLabel": "{count,plural, =1{РАЗ} =2{РАЗА} other{Отхер}}",
+  "@countLabel": {
+    "description": "A plural message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
   "countApproachesLabel": "2",
   "timeBetweenApproachesLabel": "1:00"
 }

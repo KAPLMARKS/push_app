@@ -6,25 +6,29 @@ import '/generated/l10n.dart';
 import '/presentation/presentation.dart';
 
 extension _NavigationServiceContext on BuildContext {
-  NavigationService get navigationService => read();
+  NavigationService<Object> get navigationService => read();
 }
 
 class App extends StatelessWidget {
   const App({super.key});
 
-  void run() => runApp(const App()
-  );
+  void run() => runApp( MultiProvider(
+      providers: [
+        navigationServiceProvider,
+      ],
+      child: const App(),
+  ));
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    return CupertinoApp.router(
+      routerConfig: context.navigationService.config,
       scrollBehavior: AppScrollBehavior(),
       localizationsDelegates: const [
         S.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: const HomeView(),
     );
   }
 }

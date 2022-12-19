@@ -47,7 +47,7 @@ class _ApproachesTrainingModeViewModelImpl implements ApproachesTrainingModeView
 
   @override
   String countLabel(BuildContext context) {
-    return S.of(context).countLabel;
+    return S.of(context).countLabel(2);
   }
 
   @override

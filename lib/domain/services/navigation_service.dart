@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '/presentation/presentation.dart';
@@ -6,40 +7,31 @@ final navigationServiceProvider = Provider<NavigationService>(
   create: (context) => _NavigationServiceImpl(),
 );
 
-abstract class NavigationService {
-  GlobalKey<NavigatorState> get navigatorKey;
-  String get initialRoute;
+abstract class NavigationService<T extends Object> {
+  RouterConfig<T> get config;
 
-  Route? onGenerateRoute(RouteSettings settings);
-
-  Future<dynamic>? openHome([bool replace = true]);
+  Future<dynamic>? openHome();
 }
 
-class _NavigationServiceImpl implements NavigationService {
+class _NavigationServiceImpl implements NavigationService<Object> {
   @override
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  RouterConfig<Object> config = GoRouter(routes: [
+    GoRoute(
+      name: 'root',
+      path: '/',
+      pageBuilder: (context, state) {
+        return const CupertinoPage(child: HomeView());
+      },
+    ),
+    GoRoute(
+      name: 'pushUpPage',
+      path: '/pushUp',
+      pageBuilder: (context, state) {
+        return const CupertinoPage(child: PushUpsView());
+      },
+    ),
+  ]);
 
   @override
-  String get initialRoute => '/';
-
-  @override
-  Route? onGenerateRoute(RouteSettings settings) {
-    if(settings.name == initialRoute) {
-      return CupertinoPageRoute(
-        builder: (context) => const HomeView(),
-      );
-    }
-
-    return null;
-  }
-
-  @override
-  Future? openHome([bool replace = true]) {
-    if(replace) {
-      return navigatorKey.currentState?.pushReplacementNamed('/');
-    } else {
-      return navigatorKey.currentState?.pushNamed('/');
-    }
-  }
-
+  Future? openHome() {}
 }

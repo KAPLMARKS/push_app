@@ -6,12 +6,12 @@ class FixedCountTrainingModeView extends View<FixedCountTrainingModeViewModel> {
       : super(fixedCountTrainingModeViewModelFactory, key: key);
 
   @override
-  Widget build(BuildContext context, FixedCountTrainingModeViewModel viewModel) {
+  Widget build(
+      BuildContext context, FixedCountTrainingModeViewModel viewModel) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(viewModel.wantLabel(context)),
-        Text(viewModel.pushUpFixedCountLabel(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +24,11 @@ class FixedCountTrainingModeView extends View<FixedCountTrainingModeViewModel> {
                 size: 16,
               ),
             ),
-            Text(viewModel.fixedCountLabel(context)),
+            Expanded(
+              child: CupertinoTextField(
+                controller: viewModel.controller,
+              ),
+            ),
             BlurredButton(
               borderRadius: BorderRadius.circular(64),
               padding: const EdgeInsets.all(5),
