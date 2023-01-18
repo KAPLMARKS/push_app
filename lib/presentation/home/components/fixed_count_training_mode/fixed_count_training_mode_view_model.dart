@@ -35,6 +35,7 @@ class _FixedCountTrainingModeViewModelImpl
       _fixedCount = int.parse(controller.text);
       _onConfigurationChanged(_fixedCount);
     });
+    _onConfigurationChanged(_fixedCount);
   }
 
   @override
