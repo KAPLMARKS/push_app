@@ -10,12 +10,12 @@ final navigationServiceProvider = Provider<NavigationService>(
 abstract class NavigationService<T extends Object> {
   RouterConfig<T> get config;
 
-  Future<dynamic>? openHome();
+  void openPushUpPage(configuration);
 }
 
 class _NavigationServiceImpl implements NavigationService<Object> {
   @override
-  RouterConfig<Object> config = GoRouter(routes: [
+  GoRouter config = GoRouter(routes: [
     GoRoute(
       name: 'root',
       path: '/',
@@ -33,5 +33,7 @@ class _NavigationServiceImpl implements NavigationService<Object> {
   ]);
 
   @override
-  Future? openHome() {}
+  void openPushUpPage(configuration) {
+    return config.go('/pushUp', extra: configuration);
+  }
 }

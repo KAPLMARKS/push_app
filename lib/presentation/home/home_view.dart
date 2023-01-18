@@ -1,3 +1,5 @@
+import 'package:provider/provider.dart';
+
 import '/presentation/presentation.dart';
 import 'components/home_components.dart';
 
@@ -67,17 +69,20 @@ class _TrainingsMode extends ViewComponent<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Expanded(
-      child: PageView(
-        allowImplicitScrolling: true,
-        physics: const AlwaysScrollableScrollPhysics(),
-        controller: viewModel.controller,
-        children: const [
-          FixedCountTrainingModeView(),
-          FixedTimeTrainingModeView(),
-          StaminaTrainingModeView(),
-          ApproachesTrainingModeView(),
-          PlanTrainingModeView(),
-        ],
+      child: Provider.value(
+        value: viewModel.onConfigurationChanged,
+        child: PageView(
+          allowImplicitScrolling: true,
+          physics: const AlwaysScrollableScrollPhysics(),
+          controller: viewModel.controller,
+          children: const [
+            FixedCountTrainingModeView(),
+            FixedTimeTrainingModeView(),
+            StaminaTrainingModeView(),
+            ApproachesTrainingModeView(),
+            PlanTrainingModeView(),
+          ],
+        ),
       ),
     );
   }
