@@ -18,7 +18,7 @@ abstract class FixedTimeTrainingModeViewModel extends ViewModel{
   void onPlusButtonPressed();
 }
 
-class _FixedTimeTrainingModeViewModelImpl implements FixedTimeTrainingModeViewModel {
+class _FixedTimeTrainingModeViewModelImpl extends FixedTimeTrainingModeViewModel {
   _FixedTimeTrainingModeViewModelImpl();
 
   @override

@@ -9,13 +9,13 @@ import '/presentation/presentation.dart';
 PushUpsViewModel pushUpsViewModelFactory(BuildContext context) =>
     _PushUpsViewModelImpl();
 
-abstract class PushUpsViewModel extends ViewModel {
+abstract class PushUpsViewModel extends ViewModel<PushUpsView> {
   ValueListenable<String> get countPushUps;
 
   ValueListenable<String> get time;
 }
 
-class _PushUpsViewModelImpl implements PushUpsViewModel {
+class _PushUpsViewModelImpl extends PushUpsViewModel {
   _PushUpsViewModelImpl() {
     _stopwatchTimer = Timer.periodic(
       const Duration(seconds: 1),
@@ -31,7 +31,7 @@ class _PushUpsViewModelImpl implements PushUpsViewModel {
   late final ValueNotifier<String> countPushUps =
       ValueNotifier(_countPushUps.toString());
 
-  int _countPushUps = 0;
+  late int _countPushUps = _configuration;
 
   final _player = AudioPlayer();
 
@@ -45,12 +45,14 @@ class _PushUpsViewModelImpl implements PushUpsViewModel {
 
   late final Timer _pushUpsImitationTimer;
 
+  dynamic get _configuration => view.configuration;
+
   void _stopwatchTimerCallback(Timer timer) {
     time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, timer.tick));
   }
 
   void _pushUpsImitationTimerCallback(Timer timer) {
-    _countPushUps = _countPushUps + 1;
+    _countPushUps--;
     countPushUps.value = _countPushUps.toString();
     _player.play(AssetSource('sounds/push_up_sound.mp3'));
   }

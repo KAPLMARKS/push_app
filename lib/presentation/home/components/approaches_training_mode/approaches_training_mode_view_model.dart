@@ -27,7 +27,7 @@ abstract class ApproachesTrainingModeViewModel extends ViewModel {
   void onPlusButtonPressed();
 }
 
-class _ApproachesTrainingModeViewModelImpl implements ApproachesTrainingModeViewModel {
+class _ApproachesTrainingModeViewModelImpl extends ApproachesTrainingModeViewModel {
   _ApproachesTrainingModeViewModelImpl();
 
   @override

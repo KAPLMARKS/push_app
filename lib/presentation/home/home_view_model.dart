@@ -23,7 +23,7 @@ abstract class HomeViewModel extends ViewModel {
   void onConfigurationChanged(dynamic configuration);
 }
 
-class _HomeViewModelImpl implements HomeViewModel {
+class _HomeViewModelImpl extends HomeViewModel {
   _HomeViewModelImpl({required NavigationService<Object> navigationService})
       : _navigationService = navigationService;
 

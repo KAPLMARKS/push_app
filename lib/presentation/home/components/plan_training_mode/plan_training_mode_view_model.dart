@@ -8,7 +8,7 @@ abstract class PlanTrainingModeViewModel extends ViewModel {
   String trainingProgramLabel(BuildContext context);
 }
 
-class _PlanTrainingModeViewModelImpl implements PlanTrainingModeViewModel {
+class _PlanTrainingModeViewModelImpl extends PlanTrainingModeViewModel {
   _PlanTrainingModeViewModelImpl();
 
   @override

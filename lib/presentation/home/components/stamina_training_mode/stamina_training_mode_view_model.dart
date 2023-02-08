@@ -12,7 +12,7 @@ abstract class StaminaTrainingModeViewModel extends ViewModel {
   String staminaLabel(BuildContext context);
 }
 
-class _StaminaTrainingModeViewModelImpl implements StaminaTrainingModeViewModel {
+class _StaminaTrainingModeViewModelImpl extends StaminaTrainingModeViewModel {
   _StaminaTrainingModeViewModelImpl();
 
   @override

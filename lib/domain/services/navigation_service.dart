@@ -11,6 +11,8 @@ abstract class NavigationService<T extends Object> {
   RouterConfig<T> get config;
 
   void openPushUpPage(configuration);
+
+  void openSuccessPage(configuration);
 }
 
 class _NavigationServiceImpl implements NavigationService<Object> {
@@ -25,15 +27,25 @@ class _NavigationServiceImpl implements NavigationService<Object> {
     ),
     GoRoute(
       name: 'pushUpPage',
-      path: '/pushUp',
+      path: '/push-up',
       pageBuilder: (context, state) {
-        return const CupertinoPage(child: PushUpsView());
+        return CupertinoPage(
+          child: PushUpsView(
+            configuration: state.extra,
+          ),
+        );
       },
     ),
   ]);
 
   @override
   void openPushUpPage(configuration) {
-    return config.go('/pushUp', extra: configuration);
+    return config.go('/push-up', extra: configuration);
   }
+
+  @override
+  void openSuccessPage(configuration) {
+    return config.pushReplacement('/success', extra: configuration);
+  }
+
 }

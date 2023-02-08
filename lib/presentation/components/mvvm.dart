@@ -2,13 +2,14 @@ import 'package:provider/provider.dart';
 
 import 'components.dart';
 
-abstract class ViewModel {
+abstract class ViewModel<T extends Widget> {
+  late final T view;
+
   void dispose() {}
 }
 
 abstract class View<VM extends ViewModel> extends Widget {
-  const View(
-    this.viewModelFactory, {
+  const View(this.viewModelFactory, {
     Key? key,
   }) : super(key: key);
 
@@ -28,7 +29,11 @@ class _ViewElement<VM extends ViewModel> extends ComponentElement {
     return MultiProvider(
       providers: [
         Provider<VM>(
-          create: (widget as View<VM>).viewModelFactory,
+          create: (context) {
+            final VM viewModel =  (widget as View<VM>).viewModelFactory(context);
+            viewModel.view = widget as View<VM>;
+            return viewModel;
+          },
           dispose: (context, viewModel) => viewModel.dispose(),
         ),
       ],

@@ -27,7 +27,7 @@ abstract class FixedCountTrainingModeViewModel extends ViewModel {
 }
 
 class _FixedCountTrainingModeViewModelImpl
-    implements FixedCountTrainingModeViewModel {
+    extends FixedCountTrainingModeViewModel {
   _FixedCountTrainingModeViewModelImpl({
     required void Function(dynamic configuration) onConfigurationChanged,
   }) : _onConfigurationChanged = onConfigurationChanged {
@@ -39,7 +39,7 @@ class _FixedCountTrainingModeViewModelImpl
   }
 
   @override
-  late TextEditingController controller =
+  late final TextEditingController controller =
       TextEditingController(text: _fixedCount.toString());
 
   final void Function(dynamic configuration) _onConfigurationChanged;
@@ -67,13 +67,19 @@ class _FixedCountTrainingModeViewModelImpl
   }
 
   @override
-  void onMinusButtonPressed() => controller.text = (_fixedCount--).toString();
+  void onMinusButtonPressed() {
+    controller.text = (_fixedCount--).toString();
+    _onConfigurationChanged(_fixedCount);
+  }
 
   @override
-  void onPlusButtonPressed() => controller.text = (_fixedCount++).toString();
+  void onPlusButtonPressed() {
+    controller.text = (_fixedCount++).toString();
+    _onConfigurationChanged(_fixedCount);
+  }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    controller.dispose();
   }
 }
