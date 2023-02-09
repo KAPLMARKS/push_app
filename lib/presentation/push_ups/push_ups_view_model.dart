@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
+import '/domain/services/navigation_service.dart';
 import '/presentation/presentation.dart';
 
 PushUpsViewModel pushUpsViewModelFactory(BuildContext context) =>
-    _PushUpsViewModelImpl();
+    _PushUpsViewModelImpl(navigationService: context.read());
 
 abstract class PushUpsViewModel extends ViewModel<PushUpsView> {
   ValueListenable<String> get countPushUps;
@@ -16,7 +18,7 @@ abstract class PushUpsViewModel extends ViewModel<PushUpsView> {
 }
 
 class _PushUpsViewModelImpl extends PushUpsViewModel {
-  _PushUpsViewModelImpl() {
+  _PushUpsViewModelImpl({required NavigationService<Object> navigationService}) : _navigationService = navigationService {
     _stopwatchTimer = Timer.periodic(
       const Duration(seconds: 1),
       _stopwatchTimerCallback,
@@ -26,6 +28,8 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
       _pushUpsImitationTimerCallback,
     );
   }
+
+  final NavigationService<Object> _navigationService;
 
   @override
   late final ValueNotifier<String> countPushUps =
@@ -52,9 +56,13 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   }
 
   void _pushUpsImitationTimerCallback(Timer timer) {
-    _countPushUps--;
-    countPushUps.value = _countPushUps.toString();
-    _player.play(AssetSource('sounds/push_up_sound.mp3'));
+    if(_countPushUps > 0) {
+      _countPushUps--;
+      countPushUps.value = _countPushUps.toString();
+      _player.play(AssetSource('sounds/push_up_sound.mp3'));
+    } else {
+      _navigationService.openSuccessPage();
+    }
   }
 
 

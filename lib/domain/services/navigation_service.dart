@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '/presentation/success/success_view.dart';
 import '/presentation/presentation.dart';
 
 final navigationServiceProvider = Provider<NavigationService>(
@@ -12,7 +13,7 @@ abstract class NavigationService<T extends Object> {
 
   void openPushUpPage(configuration);
 
-  void openSuccessPage(configuration);
+  void openSuccessPage();
 }
 
 class _NavigationServiceImpl implements NavigationService<Object> {
@@ -36,6 +37,16 @@ class _NavigationServiceImpl implements NavigationService<Object> {
         );
       },
     ),
+    GoRoute(
+      name: 'successPage',
+      path: '/success',
+      pageBuilder: (context, state) {
+        return const CupertinoPage(
+          child: SuccessView(
+          ),
+        );
+      },
+    ),
   ]);
 
   @override
@@ -44,8 +55,8 @@ class _NavigationServiceImpl implements NavigationService<Object> {
   }
 
   @override
-  void openSuccessPage(configuration) {
-    return config.pushReplacement('/success', extra: configuration);
+  void openSuccessPage() {
+    return config.pushReplacement('/success');
   }
 
 }
