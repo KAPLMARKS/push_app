@@ -1,10 +1,16 @@
-import '../../../../generated/l10n.dart';
+import 'package:provider/provider.dart';
+
 import '../../../components/components.dart';
+import '/data/models/mode_configuration.dart';
+import '/generated/l10n.dart';
 
 FixedTimeTrainingModeViewModel fixedTimeTrainingModeViewModelFactory(
-    BuildContext context) =>
-    _FixedTimeTrainingModeViewModelImpl();
-abstract class FixedTimeTrainingModeViewModel extends ViewModel{
+        BuildContext context) =>
+    _FixedTimeTrainingModeViewModelImpl(
+      onConfigurationChanged: context.read(),
+    );
+
+abstract class FixedTimeTrainingModeViewModel extends ViewModel {
   String wantLabel(BuildContext context);
 
   String pushUpFixedTimedLabel(BuildContext context);
@@ -18,8 +24,18 @@ abstract class FixedTimeTrainingModeViewModel extends ViewModel{
   void onPlusButtonPressed();
 }
 
-class _FixedTimeTrainingModeViewModelImpl extends FixedTimeTrainingModeViewModel {
-  _FixedTimeTrainingModeViewModelImpl();
+class _FixedTimeTrainingModeViewModelImpl
+    extends FixedTimeTrainingModeViewModel {
+  _FixedTimeTrainingModeViewModelImpl({
+    required void Function(ModeConfiguration configuration)
+        onConfigurationChanged,
+  }) : _onConfigurationChanged = onConfigurationChanged {
+    _onConfigurationChanged(_configuration);
+  }
+
+  final void Function(ModeConfiguration configuration) _onConfigurationChanged;
+
+  final FixedTimeModeConfiguration _configuration = const FixedTimeModeConfiguration(Duration(minutes: 5));
 
   @override
   String fixedTimeLabel(BuildContext context) {
@@ -57,5 +73,4 @@ class _FixedTimeTrainingModeViewModelImpl extends FixedTimeTrainingModeViewModel
   void dispose() {
     // TODO: implement dispose
   }
-
 }
