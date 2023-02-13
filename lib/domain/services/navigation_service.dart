@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../data/data.dart';
 import '/presentation/success/success_view.dart';
 import '/presentation/presentation.dart';
 
@@ -11,7 +12,7 @@ final navigationServiceProvider = Provider<NavigationService>(
 abstract class NavigationService<T extends Object> {
   RouterConfig<T> get config;
 
-  void openPushUpPage(configuration);
+  void openPushUpPage(ModeConfiguration configuration);
 
   void openSuccessPage();
 }
@@ -32,7 +33,7 @@ class _NavigationServiceImpl implements NavigationService<Object> {
       pageBuilder: (context, state) {
         return CupertinoPage(
           child: PushUpsView(
-            configuration: state.extra,
+            configuration: state.extra as ModeConfiguration,
           ),
         );
       },
@@ -50,7 +51,7 @@ class _NavigationServiceImpl implements NavigationService<Object> {
   ]);
 
   @override
-  void openPushUpPage(configuration) {
+  void openPushUpPage(ModeConfiguration configuration) {
     return config.go('/push-up', extra: configuration);
   }
 

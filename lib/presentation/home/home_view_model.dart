@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 
+import '/data/data.dart';
 import '/domain/domain.dart';
 import '/generated/l10n.dart';
 import '/presentation/presentation.dart';
@@ -20,7 +21,7 @@ abstract class HomeViewModel extends ViewModel {
 
   void onStatisticsButtonPressed();
 
-  void onConfigurationChanged(dynamic configuration);
+  void onConfigurationChanged(ModeConfiguration configuration);
 }
 
 class _HomeViewModelImpl extends HomeViewModel {
@@ -48,7 +49,7 @@ class _HomeViewModelImpl extends HomeViewModel {
     _navigationService.openPushUpPage(_configuration);
   }
 
-  late dynamic _configuration;
+  late ModeConfiguration _configuration;
 
   @override
   void onStatisticsButtonPressed() {}

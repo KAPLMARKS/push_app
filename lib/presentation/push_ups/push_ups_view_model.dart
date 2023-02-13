@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../data/data.dart';
 import '/domain/services/navigation_service.dart';
 import '/presentation/presentation.dart';
 
@@ -35,7 +36,7 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   late final ValueNotifier<String> countPushUps =
       ValueNotifier(_countPushUps.toString());
 
-  late int _countPushUps = _configuration;
+  late int _countPushUps = _configuration is FixedCountModeConfiguration ? (_configuration as FixedCountModeConfiguration).count : 0;
 
   final _player = AudioPlayer();
 
@@ -49,7 +50,7 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
 
   late final Timer _pushUpsImitationTimer;
 
-  dynamic get _configuration => view.configuration;
+  late final ModeConfiguration _configuration = view.configuration;
 
   void _stopwatchTimerCallback(Timer timer) {
     time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, timer.tick));

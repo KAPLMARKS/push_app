@@ -1,7 +1,8 @@
 import 'package:provider/provider.dart';
 
-import '../../../../generated/l10n.dart';
-import '../../../components/components.dart';
+import '/data/models/mode_configuration.dart';
+import '/generated/l10n.dart';
+import '/presentation/presentation.dart';
 
 FixedCountTrainingModeViewModel fixedCountTrainingModeViewModelFactory(
   BuildContext context,
@@ -29,22 +30,22 @@ abstract class FixedCountTrainingModeViewModel extends ViewModel {
 class _FixedCountTrainingModeViewModelImpl
     extends FixedCountTrainingModeViewModel {
   _FixedCountTrainingModeViewModelImpl({
-    required void Function(dynamic configuration) onConfigurationChanged,
+    required void Function(ModeConfiguration configuration) onConfigurationChanged,
   }) : _onConfigurationChanged = onConfigurationChanged {
     controller.addListener(() {
-      _fixedCount = int.parse(controller.text);
-      _onConfigurationChanged(_fixedCount);
+      _configuration = FixedCountModeConfiguration(int.parse(controller.text));
+      _onConfigurationChanged(_configuration);
     });
-    _onConfigurationChanged(_fixedCount);
+    _onConfigurationChanged(_configuration);
   }
 
   @override
   late final TextEditingController controller =
-      TextEditingController(text: _fixedCount.toString());
+      TextEditingController(text: _configuration.count.toString());
 
-  final void Function(dynamic configuration) _onConfigurationChanged;
+  final void Function(ModeConfiguration configuration) _onConfigurationChanged;
 
-  int _fixedCount = 10;
+  FixedCountModeConfiguration _configuration = const FixedCountModeConfiguration(10);
 
   @override
   String countLabel(BuildContext context) {
@@ -68,14 +69,16 @@ class _FixedCountTrainingModeViewModelImpl
 
   @override
   void onMinusButtonPressed() {
-    controller.text = (_fixedCount--).toString();
-    _onConfigurationChanged(_fixedCount);
+    _configuration = FixedCountModeConfiguration(_configuration.count - 1);
+    controller.text = (_configuration.count).toString();
+    _onConfigurationChanged(_configuration);
   }
 
   @override
   void onPlusButtonPressed() {
-    controller.text = (_fixedCount++).toString();
-    _onConfigurationChanged(_fixedCount);
+    _configuration = FixedCountModeConfiguration(_configuration.count + 1);
+    controller.text = (_configuration.count).toString();
+    _onConfigurationChanged(_configuration);
   }
 
   @override

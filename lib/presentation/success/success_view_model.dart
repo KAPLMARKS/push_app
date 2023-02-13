@@ -24,6 +24,6 @@ class _SuccessViewModelImpl extends SuccessViewModel {
   final double pushUpsSpeed = 0.00;
 
   @override
-  final String time = "0:00";
+  final String time = '0:00';
 
 }

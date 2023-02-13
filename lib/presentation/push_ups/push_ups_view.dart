@@ -1,9 +1,10 @@
+import '/data/data.dart';
 import '/presentation/presentation.dart';
 
 class PushUpsView extends View<PushUpsViewModel> {
   const PushUpsView({Key? key, required this.configuration}) : super(pushUpsViewModelFactory, key: key);
 
-  final dynamic configuration;
+  final ModeConfiguration configuration;
 
   @override
   Widget build(BuildContext context, PushUpsViewModel viewModel) {
