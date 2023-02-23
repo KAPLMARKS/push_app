@@ -4,12 +4,16 @@ import 'components.dart';
 
 abstract class ViewModel<T extends Widget> {
   late final T view;
+  late BuildContext _context;
+
+  BuildContext get context => _context;
 
   void dispose() {}
 }
 
 abstract class View<VM extends ViewModel> extends Widget {
-  const View(this.viewModelFactory, {
+  const View(
+    this.viewModelFactory, {
     Key? key,
   }) : super(key: key);
 
@@ -30,8 +34,10 @@ class _ViewElement<VM extends ViewModel> extends ComponentElement {
       providers: [
         Provider<VM>(
           create: (context) {
-            final VM viewModel =  (widget as View<VM>).viewModelFactory(context);
-            viewModel.view = widget as View<VM>;
+            final VM viewModel = (widget as View<VM>).viewModelFactory(context);
+            viewModel
+              ..view = widget as View<VM>
+              .._context = this;
             return viewModel;
           },
           dispose: (context, viewModel) => viewModel.dispose(),

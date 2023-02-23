@@ -4,14 +4,14 @@ import '/data/models/mode_configuration.dart';
 import '/generated/l10n.dart';
 import '/presentation/presentation.dart';
 
-FixedCountTrainingModeViewModel fixedCountTrainingModeViewModelFactory(
+FixedCountModeViewModel fixedCountModeViewModelFactory(
   BuildContext context,
 ) =>
-    _FixedCountTrainingModeViewModelImpl(
+    _FixedCountModeViewModelImpl(
       onConfigurationChanged: context.read(),
     );
 
-abstract class FixedCountTrainingModeViewModel extends ViewModel {
+abstract class FixedCountModeViewModel extends ViewModel {
   String wantLabel(BuildContext context);
 
   String pushUpFixedCountLabel(BuildContext context);
@@ -27,10 +27,11 @@ abstract class FixedCountTrainingModeViewModel extends ViewModel {
   void onPlusButtonPressed();
 }
 
-class _FixedCountTrainingModeViewModelImpl
-    extends FixedCountTrainingModeViewModel {
-  _FixedCountTrainingModeViewModelImpl({
-    required void Function(ModeConfiguration configuration) onConfigurationChanged,
+class _FixedCountModeViewModelImpl
+    extends FixedCountModeViewModel {
+  _FixedCountModeViewModelImpl({
+    required void Function(ModeConfiguration configuration)
+        onConfigurationChanged,
   }) : _onConfigurationChanged = onConfigurationChanged {
     controller.addListener(() {
       _configuration = FixedCountModeConfiguration(int.parse(controller.text));
@@ -45,7 +46,8 @@ class _FixedCountTrainingModeViewModelImpl
 
   final void Function(ModeConfiguration configuration) _onConfigurationChanged;
 
-  FixedCountModeConfiguration _configuration = const FixedCountModeConfiguration(10);
+  FixedCountModeConfiguration _configuration =
+      const FixedCountModeConfiguration(10);
 
   @override
   String countLabel(BuildContext context) {
@@ -69,20 +71,22 @@ class _FixedCountTrainingModeViewModelImpl
 
   @override
   void onMinusButtonPressed() {
-    _configuration = FixedCountModeConfiguration(_configuration.count - 1);
-    controller.text = (_configuration.count).toString();
-    _onConfigurationChanged(_configuration);
+    _changeConfiguration(_configuration.count - 1);
   }
 
   @override
   void onPlusButtonPressed() {
-    _configuration = FixedCountModeConfiguration(_configuration.count + 1);
-    controller.text = (_configuration.count).toString();
-    _onConfigurationChanged(_configuration);
+    _changeConfiguration(_configuration.count + 1);
   }
 
   @override
   void dispose() {
     controller.dispose();
+  }
+
+  void _changeConfiguration(int count) {
+    _configuration = FixedCountModeConfiguration(count);
+    controller.text = (_configuration.count).toString();
+    _onConfigurationChanged(_configuration);
   }
 }

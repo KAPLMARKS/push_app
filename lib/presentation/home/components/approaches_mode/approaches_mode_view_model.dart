@@ -1,11 +1,11 @@
 import '../../../../generated/l10n.dart';
 import '../../../components/components.dart';
 
-ApproachesTrainingModeViewModel approachesTrainingModeViewModelFactory(
+ApproachesModeViewModel approachesModeViewModelFactory(
         BuildContext context) =>
-    _ApproachesTrainingModeViewModelImpl();
+    _ApproachesModeViewModelImpl();
 
-abstract class ApproachesTrainingModeViewModel extends ViewModel {
+abstract class ApproachesModeViewModel extends ViewModel {
   String countLabelWithParameter(BuildContext context);
 
   String fixedCountLabel(BuildContext context);
@@ -27,8 +27,8 @@ abstract class ApproachesTrainingModeViewModel extends ViewModel {
   void onPlusButtonPressed();
 }
 
-class _ApproachesTrainingModeViewModelImpl extends ApproachesTrainingModeViewModel {
-  _ApproachesTrainingModeViewModelImpl();
+class _ApproachesModeViewModelImpl extends ApproachesModeViewModel {
+  _ApproachesModeViewModelImpl();
 
   @override
   String approachLabel(BuildContext context) {

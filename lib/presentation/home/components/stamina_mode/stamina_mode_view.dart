@@ -1,12 +1,12 @@
 import '../../../components/components.dart';
-import 'stamina_training_mode_view_model.dart';
+import 'stamina_mode_view_model.dart';
 
-class StaminaTrainingModeView extends View<StaminaTrainingModeViewModel> {
-  const StaminaTrainingModeView({Key? key})
-      : super(staminaTrainingModeViewModelFactory, key: key);
+class StaminaModeView extends View<StaminaModeViewModel> {
+  const StaminaModeView({Key? key})
+      : super(staminaModeViewModelFactory, key: key);
 
   @override
-  Widget build(BuildContext context, StaminaTrainingModeViewModel viewModel) {
+  Widget build(BuildContext context, StaminaModeViewModel viewModel) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

@@ -19,7 +19,8 @@ abstract class PushUpsViewModel extends ViewModel<PushUpsView> {
 }
 
 class _PushUpsViewModelImpl extends PushUpsViewModel {
-  _PushUpsViewModelImpl({required NavigationService<Object> navigationService}) : _navigationService = navigationService {
+  _PushUpsViewModelImpl({required NavigationService<Object> navigationService})
+      : _navigationService = navigationService {
     _stopwatchTimer = Timer.periodic(
       const Duration(seconds: 1),
       _stopwatchTimerCallback,
@@ -36,7 +37,9 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   late final ValueNotifier<String> countPushUps =
       ValueNotifier(_countPushUps.toString());
 
-  late int _countPushUps = _configuration is FixedCountModeConfiguration ? (_configuration as FixedCountModeConfiguration).count : 0;
+  late int _countPushUps = _configuration.mode == Mode.fixedCount
+      ? (_configuration as FixedCountModeConfiguration).count
+      : 0;
 
   final _player = AudioPlayer();
 
@@ -53,19 +56,28 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   late final ModeConfiguration _configuration = view.configuration;
 
   void _stopwatchTimerCallback(Timer timer) {
-    time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, timer.tick));
-  }
-
-  void _pushUpsImitationTimerCallback(Timer timer) {
-    if(_countPushUps > 0) {
-      _countPushUps--;
-      countPushUps.value = _countPushUps.toString();
-      _player.play(AssetSource('sounds/push_up_sound.mp3'));
-    } else {
-      _navigationService.openSuccessPage();
+    if (_configuration.mode == Mode.fixedCount) {
+      time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, timer.tick));
+    } else if (_configuration.mode == Mode.fixedTime) {
+      final int seconds =
+          (_configuration as FixedTimeModeConfiguration).duration.inSeconds -
+              timer.tick;
+      time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, seconds));
     }
   }
 
+  void _pushUpsImitationTimerCallback(Timer timer) {
+    if (_configuration.mode == Mode.fixedCount) {
+      _countPushUps--;
+    } else {
+      _countPushUps++;
+    }
+    countPushUps.value = _countPushUps.toString();
+    _player.play(AssetSource('sounds/push_up_sound.mp3'));
+    if (_configuration is FixedCountModeConfiguration && _countPushUps == 0) {
+      _navigationService.openSuccessPage();
+    }
+  }
 
   @override
   void dispose() {

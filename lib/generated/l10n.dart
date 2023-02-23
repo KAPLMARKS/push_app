@@ -100,16 +100,6 @@ class S {
     );
   }
 
-  /// `МИНУТ`
-  String get minutesLabel {
-    return Intl.message(
-      'МИНУТ',
-      name: 'minutesLabel',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `{count}\nРАЗ`
   String countLabelWithParameter(int count) {
     return Intl.message(
@@ -200,6 +190,39 @@ class S {
       name: 'timeBetweenApproachesLabel',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `ХОЧУ ОТЖИМАТЬСЯ`
+  String get homeFixedTimeModeLabel {
+    return Intl.message(
+      'ХОЧУ ОТЖИМАТЬСЯ',
+      name: 'homeFixedTimeModeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `МИНУТ`
+  String get homeFixedTimeModeDescription {
+    return Intl.message(
+      'МИНУТ',
+      name: 'homeFixedTimeModeDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{time}`
+  String homeFixedTimeModeTime(DateTime time) {
+    final DateFormat timeDateFormat = DateFormat.ms(Intl.getCurrentLocale());
+    final String timeString = timeDateFormat.format(time);
+
+    return Intl.message(
+      '$timeString',
+      name: 'homeFixedTimeModeTime',
+      desc: '',
+      args: [timeString],
     );
   }
 }

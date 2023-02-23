@@ -1,10 +1,10 @@
 import '../../../../generated/l10n.dart';
 import '../../../components/components.dart';
 
-StaminaTrainingModeViewModel staminaTrainingModeViewModelFactory(
+StaminaModeViewModel staminaModeViewModelFactory(
     BuildContext context) =>
-    _StaminaTrainingModeViewModelImpl();
-abstract class StaminaTrainingModeViewModel extends ViewModel {
+    _StaminaModeViewModelImpl();
+abstract class StaminaModeViewModel extends ViewModel {
   String wantLabel(BuildContext context);
 
   String pushUpFixedTimedLabel(BuildContext context);
@@ -12,8 +12,8 @@ abstract class StaminaTrainingModeViewModel extends ViewModel {
   String staminaLabel(BuildContext context);
 }
 
-class _StaminaTrainingModeViewModelImpl extends StaminaTrainingModeViewModel {
-  _StaminaTrainingModeViewModelImpl();
+class _StaminaModeViewModelImpl extends StaminaModeViewModel {
+  _StaminaModeViewModelImpl();
 
   @override
   String pushUpFixedTimedLabel(BuildContext context) {

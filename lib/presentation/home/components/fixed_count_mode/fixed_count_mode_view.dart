@@ -1,13 +1,13 @@
 import '../../../components/components.dart';
 import 'components.dart';
 
-class FixedCountTrainingModeView extends View<FixedCountTrainingModeViewModel> {
-  const FixedCountTrainingModeView({Key? key})
-      : super(fixedCountTrainingModeViewModelFactory, key: key);
+class FixedCountModeView extends View<FixedCountModeViewModel> {
+  const FixedCountModeView({Key? key})
+      : super(fixedCountModeViewModelFactory, key: key);
 
   @override
   Widget build(
-      BuildContext context, FixedCountTrainingModeViewModel viewModel) {
+      BuildContext context, FixedCountModeViewModel viewModel) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

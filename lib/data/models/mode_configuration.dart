@@ -13,30 +13,36 @@
       duration - rest
 */
 
-abstract class ModeConfiguration {}
 
-class FixedCountModeConfiguration implements ModeConfiguration {
-  const FixedCountModeConfiguration(this.count);
+import 'models.dart';
+
+abstract class ModeConfiguration {
+  const ModeConfiguration(this.mode);
+  final Mode mode;
+}
+
+class FixedCountModeConfiguration extends ModeConfiguration {
+  const FixedCountModeConfiguration(this.count) : super(Mode.fixedCount);
 
   final int count;
 }
 
-class FixedTimeModeConfiguration implements ModeConfiguration {
-  const FixedTimeModeConfiguration(this.duration);
+class FixedTimeModeConfiguration extends ModeConfiguration {
+  const FixedTimeModeConfiguration(this.duration) : super(Mode.fixedTime);
 
   final Duration duration;
 }
 
-class StaminaModeConfiguration implements ModeConfiguration {
-  const StaminaModeConfiguration();
+class StaminaModeConfiguration extends ModeConfiguration {
+  const StaminaModeConfiguration() : super(Mode.stamina);
 }
 
-class ApproachesModeConfiguration implements ModeConfiguration {
+class ApproachesModeConfiguration extends ModeConfiguration {
   const ApproachesModeConfiguration({
     required this.approaches,
     required this.pushUps,
     required this.rest,
-  });
+  }) : super(Mode.approaches);
 
   final int approaches;
 

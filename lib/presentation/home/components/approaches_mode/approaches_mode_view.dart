@@ -1,13 +1,13 @@
 import '../../../components/components.dart';
-import 'approaches_training_mode_view_model.dart';
+import 'approaches_mode_view_model.dart';
 
-class ApproachesTrainingModeView extends View<ApproachesTrainingModeViewModel> {
-  const ApproachesTrainingModeView({Key? key})
-      : super(approachesTrainingModeViewModelFactory, key: key);
+class ApproachesModeView extends View<ApproachesModeViewModel> {
+  const ApproachesModeView({Key? key})
+      : super(approachesModeViewModelFactory, key: key);
 
   @override
   Widget build(
-      BuildContext context, ApproachesTrainingModeViewModel viewModel) {
+      BuildContext context, ApproachesModeViewModel viewModel) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

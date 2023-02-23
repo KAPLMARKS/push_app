@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count) => "${count}\nРАЗ";
 
+  static String m2(time) => "${time}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "approachLabel": MessageLookupByLibrary.simpleMessage("ПОДХОДА"),
@@ -34,7 +36,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "countLabel": m0,
         "countLabelWithParameter": m1,
         "fixedTimeLabel": MessageLookupByLibrary.simpleMessage("10:00"),
-        "minutesLabel": MessageLookupByLibrary.simpleMessage("МИНУТ"),
+        "homeFixedTimeModeDescription":
+            MessageLookupByLibrary.simpleMessage("МИНУТ"),
+        "homeFixedTimeModeLabel":
+            MessageLookupByLibrary.simpleMessage("ХОЧУ ОТЖИМАТЬСЯ"),
+        "homeFixedTimeModeTime": m2,
         "pushUpFixedCountLabel": MessageLookupByLibrary.simpleMessage("10"),
         "pushUpFixedTimedLabel":
             MessageLookupByLibrary.simpleMessage("ОТЖИМАТЬСЯ"),

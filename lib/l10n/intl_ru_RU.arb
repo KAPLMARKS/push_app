@@ -8,7 +8,6 @@
   "wantLabel": "ХОЧУ",
   "pushUpFixedTimedLabel": "ОТЖИМАТЬСЯ",
   "staminaLabel": "НА ВЫНОСЛИВОСТь",
-  "minutesLabel": "МИНУТ",
   "countLabelWithParameter": "{count}\nРАЗ",
   "@countLabelWithParameter": {
     "placeholders": {
@@ -31,7 +30,19 @@
       }
     }
   },
-
   "countApproachesLabel": "2",
-  "timeBetweenApproachesLabel": "1:00"
+  "timeBetweenApproachesLabel": "1:00",
+  "homeFixedTimeModeLabel": "ХОЧУ ОТЖИМАТЬСЯ",
+  "homeFixedTimeModeDescription": "МИНУТ",
+  "homeFixedTimeModeTime": "{time}",
+  "@homeFixedTimeModeTime": {
+    "placeholders": {
+      "time": {
+        "type": "DateTime",
+        "format": "ms",
+        "example": "10:00",
+        "description": "User selected time for trainings"
+      }
+    }
+  }
 }

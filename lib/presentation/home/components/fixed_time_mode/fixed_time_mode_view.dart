@@ -1,17 +1,15 @@
-import '../../../components/components.dart';
-import 'fixed_time_training_mode_view_model.dart';
+import '/presentation/presentation.dart';
 
-class FixedTimeTrainingModeView extends View<FixedTimeTrainingModeViewModel> {
-  const FixedTimeTrainingModeView({Key? key})
-      : super(fixedTimeTrainingModeViewModelFactory, key: key);
+class FixedTimeModeView extends View<FixedTimeModeViewModel> {
+  const FixedTimeModeView({Key? key})
+      : super(fixedTimeModeViewModelFactory, key: key);
 
   @override
-  Widget build(BuildContext context, FixedTimeTrainingModeViewModel viewModel) {
+  Widget build(BuildContext context, FixedTimeModeViewModel viewModel) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(viewModel.wantLabel(context)),
-        Text(viewModel.pushUpFixedTimedLabel(context)),
+        Text(viewModel.label(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +22,10 @@ class FixedTimeTrainingModeView extends View<FixedTimeTrainingModeViewModel> {
                 size: 16,
               ),
             ),
-            Text(viewModel.fixedTimeLabel(context)),
+            ValueListenableBuilder<String>(
+              valueListenable: viewModel.time,
+              builder: (context, time, ___) => Text(time),
+            ),
             BlurredButton(
               borderRadius: BorderRadius.circular(64),
               padding: const EdgeInsets.all(5),
@@ -36,7 +37,7 @@ class FixedTimeTrainingModeView extends View<FixedTimeTrainingModeViewModel> {
             ),
           ],
         ),
-        Text(viewModel.minutesLabel(context)),
+        Text(viewModel.description(context)),
       ],
     );
   }
