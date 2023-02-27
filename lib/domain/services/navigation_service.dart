@@ -14,7 +14,7 @@ abstract class NavigationService<T extends Object> {
 
   void openPushUpPage(ModeConfiguration configuration);
 
-  void openSuccessPage(String countPushUps, String duration);
+  void openSuccessPage(int countPushUps, Duration duration);
 }
 
 class _NavigationServiceImpl implements NavigationService<Object> {
@@ -58,7 +58,7 @@ class _NavigationServiceImpl implements NavigationService<Object> {
   }
 
   @override
-  void openSuccessPage(String countPushUps, String time) {
+  void openSuccessPage(int countPushUps, Duration time) {
     return config.pushReplacement(
       '/success',
       extra: {

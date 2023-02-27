@@ -6,8 +6,8 @@ class SuccessView extends View<SuccessViewModel> {
   const SuccessView({Key? key, required this.countPushUps, required this.time})
       : super(successViewModelFactory, key: key);
 
-  final String countPushUps;
-  final String time;
+  final int countPushUps;
+  final Duration time;
 
   @override
   Widget build(BuildContext context, SuccessViewModel viewModel) {

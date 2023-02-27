@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 import '/presentation/presentation.dart';
 import 'success.dart';
 
@@ -12,15 +13,20 @@ abstract class SuccessViewModel extends ViewModel<SuccessView> {
 }
 
 class _SuccessViewModelImpl extends SuccessViewModel {
-  _SuccessViewModelImpl();
 
   @override
-  late final ValueNotifier<String> countPushUps = ValueNotifier(_countPushUps);
-
-  late final String _countPushUps = view.countPushUps;
+  late final ValueNotifier<String> countPushUps = ValueNotifier(
+    _countPushUps.toString(),
+  );
 
   @override
-  late final ValueNotifier<String> time = ValueNotifier(_time);
+  late final ValueNotifier<String> time = ValueNotifier(_timeFormat.format(
+    DateTime(0, 0, 0, 0, 0, _time.inSeconds),
+  ));
 
-  late final String _time = view.time;
+  final DateFormat _timeFormat = DateFormat('mm:ss');
+
+  late final int _countPushUps = view.countPushUps;
+
+  late final Duration _time = view.time;
 }

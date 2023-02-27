@@ -87,7 +87,11 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
 
   void _onFinish() {
     _navigationService.openSuccessPage(
-        countPushUps.toString(), time.toString());
+      _configuration.mode == Mode.fixedCount
+          ? (_configuration as FixedCountModeConfiguration).count
+          : _countPushUps,
+      Duration(seconds: _stopwatchTimer.tick),
+    );
   }
 
   @override
