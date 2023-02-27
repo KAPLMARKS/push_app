@@ -30,7 +30,7 @@ abstract class FixedCountModeViewModel extends ViewModel {
 class _FixedCountModeViewModelImpl
     extends FixedCountModeViewModel {
   _FixedCountModeViewModelImpl({
-    required void Function(ModeConfiguration configuration)
+    required OnConfigurationChanged
         onConfigurationChanged,
   }) : _onConfigurationChanged = onConfigurationChanged {
     controller.addListener(() {
@@ -44,7 +44,7 @@ class _FixedCountModeViewModelImpl
   late final TextEditingController controller =
       TextEditingController(text: _configuration.count.toString());
 
-  final void Function(ModeConfiguration configuration) _onConfigurationChanged;
+  final OnConfigurationChanged _onConfigurationChanged;
 
   FixedCountModeConfiguration _configuration =
       const FixedCountModeConfiguration(10);

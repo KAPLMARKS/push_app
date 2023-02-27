@@ -44,8 +44,11 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   final _player = AudioPlayer();
 
   @override
-  late final ValueNotifier<String> time =
-      ValueNotifier(_stopwatchFormat.format(DateTime(0, 0, 0)));
+  late final ValueNotifier<String> time = ValueNotifier(_stopwatchFormat.format(
+      _configuration.mode == Mode.fixedTime
+          ? DateTime(0, 0, 0, 0, 0,
+              (_configuration as FixedTimeModeConfiguration).duration.inSeconds)
+          : DateTime(0)));
 
   final DateFormat _stopwatchFormat = DateFormat('mm:ss');
 
@@ -56,13 +59,16 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   late final ModeConfiguration _configuration = view.configuration;
 
   void _stopwatchTimerCallback(Timer timer) {
-    if (_configuration.mode == Mode.fixedCount) {
-      time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, timer.tick));
-    } else if (_configuration.mode == Mode.fixedTime) {
+    if (_configuration.mode == Mode.fixedTime) {
       final int seconds =
           (_configuration as FixedTimeModeConfiguration).duration.inSeconds -
               timer.tick;
       time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, seconds));
+      if (seconds == 0) {
+        _onFinish();
+      }
+    } else {
+      time.value = _stopwatchFormat.format(DateTime(0, 0, 0, 0, 0, timer.tick));
     }
   }
 
@@ -75,8 +81,12 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
     countPushUps.value = _countPushUps.toString();
     _player.play(AssetSource('sounds/push_up_sound.mp3'));
     if (_configuration is FixedCountModeConfiguration && _countPushUps == 0) {
-      _navigationService.openSuccessPage();
+      _onFinish();
     }
+  }
+
+  void _onFinish() {
+    _navigationService.openSuccessPage();
   }
 
   @override

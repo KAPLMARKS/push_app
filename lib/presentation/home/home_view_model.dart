@@ -5,6 +5,8 @@ import '/domain/domain.dart';
 import '/generated/l10n.dart';
 import '/presentation/presentation.dart';
 
+typedef OnConfigurationChanged = void Function(ModeConfiguration configuration);
+
 HomeViewModel homeViewModelFactory(BuildContext context) =>
     _HomeViewModelImpl(navigationService: context.read());
 

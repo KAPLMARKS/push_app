@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/components.dart';
+import '../../home.dart';
 import '/data/models/mode_configuration.dart';
 import '/generated/l10n.dart';
 
@@ -26,7 +27,7 @@ abstract class FixedTimeModeViewModel extends ViewModel {
 class _FixedTimeModeViewModelImpl
     extends FixedTimeModeViewModel {
   _FixedTimeModeViewModelImpl({
-    required void Function(ModeConfiguration configuration)
+    required OnConfigurationChanged
         onConfigurationChanged,
   }) : _onConfigurationChanged = onConfigurationChanged {
     _onConfigurationChanged(_configuration);
@@ -35,7 +36,7 @@ class _FixedTimeModeViewModelImpl
   @override
   late final ValueNotifier<String> time = ValueNotifier(_time);
 
-  final void Function(ModeConfiguration configuration) _onConfigurationChanged;
+  final OnConfigurationChanged _onConfigurationChanged;
 
   FixedTimeModeConfiguration _configuration =
       const FixedTimeModeConfiguration(Duration(minutes: 5));

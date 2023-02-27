@@ -1,9 +1,17 @@
+import 'package:provider/provider.dart';
+
+import '../../../../data/data.dart';
 import '../../../../generated/l10n.dart';
 import '../../../components/components.dart';
+import '../../home_view_model.dart';
 
 StaminaModeViewModel staminaModeViewModelFactory(
-    BuildContext context) =>
-    _StaminaModeViewModelImpl();
+  BuildContext context,
+) =>
+    _StaminaModeViewModelImpl(
+      onConfigurationChanged: context.read(),
+    );
+
 abstract class StaminaModeViewModel extends ViewModel {
   String wantLabel(BuildContext context);
 
@@ -13,7 +21,17 @@ abstract class StaminaModeViewModel extends ViewModel {
 }
 
 class _StaminaModeViewModelImpl extends StaminaModeViewModel {
-  _StaminaModeViewModelImpl();
+  _StaminaModeViewModelImpl({
+    required OnConfigurationChanged
+        onConfigurationChanged,
+  }): _onConfigurationChanged = onConfigurationChanged {
+    _onConfigurationChanged(_configuration);
+  }
+
+  final OnConfigurationChanged _onConfigurationChanged;
+
+  final StaminaModeConfiguration _configuration =
+      const StaminaModeConfiguration();
 
   @override
   String pushUpFixedTimedLabel(BuildContext context) {
