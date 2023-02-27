@@ -2,12 +2,20 @@ import '../components/card.dart';
 import '/presentation/presentation.dart';
 import 'success.dart';
 
-class SuccessView extends View<SuccessViewModel> {
-  const SuccessView({Key? key, required this.countPushUps, required this.time})
-      : super(successViewModelFactory, key: key);
+class SuccessViewArguments {
+  SuccessViewArguments({required this.countPushUps, required this.time});
 
   final int countPushUps;
   final Duration time;
+}
+
+class SuccessView extends View<SuccessViewModel> {
+  const SuccessView({
+    Key? key,
+    required this.arguments,
+  }) : super(successViewModelFactory, key: key);
+
+  final SuccessViewArguments arguments;
 
   @override
   Widget build(BuildContext context, SuccessViewModel viewModel) {

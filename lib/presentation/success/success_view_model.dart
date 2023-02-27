@@ -26,7 +26,7 @@ class _SuccessViewModelImpl extends SuccessViewModel {
 
   final DateFormat _timeFormat = DateFormat('mm:ss');
 
-  late final int _countPushUps = view.countPushUps;
+  late final int _countPushUps = view.arguments.countPushUps;
 
-  late final Duration _time = view.time;
+  late final Duration _time = view.arguments.time;
 }
