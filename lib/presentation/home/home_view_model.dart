@@ -28,15 +28,24 @@ abstract class HomeViewModel extends ViewModel {
 
 class _HomeViewModelImpl extends HomeViewModel {
   _HomeViewModelImpl({required NavigationService<Object> navigationService})
-      : _navigationService = navigationService;
+      : _navigationService = navigationService {
+    controller.addListener(() {
+      if(controller.page! % 1 == 0 && controller.page != _page) {
+        _page = controller.page as int;
+        print(controller.page);
+      }
+    });
+  }
 
   final NavigationService<Object> _navigationService;
+
+  int _page = 0;
 
   @override
   final String backgroundImageAsset = 'assets/images/push_ups.jpg';
 
   @override
-  final PageController controller = PageController();
+  late final PageController controller = PageController(initialPage: _page);
 
   @override
   String statisticsLabel(BuildContext context) {
