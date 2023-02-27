@@ -86,7 +86,8 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
   }
 
   void _onFinish() {
-    _navigationService.openSuccessPage();
+    _navigationService.openSuccessPage(
+        countPushUps.toString(), time.toString());
   }
 
   @override

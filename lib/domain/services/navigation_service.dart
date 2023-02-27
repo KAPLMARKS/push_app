@@ -14,7 +14,7 @@ abstract class NavigationService<T extends Object> {
 
   void openPushUpPage(ModeConfiguration configuration);
 
-  void openSuccessPage();
+  void openSuccessPage(String countPushUps, String duration);
 }
 
 class _NavigationServiceImpl implements NavigationService<Object> {
@@ -42,8 +42,10 @@ class _NavigationServiceImpl implements NavigationService<Object> {
       name: 'successPage',
       path: '/success',
       pageBuilder: (context, state) {
-        return const CupertinoPage(
+        return CupertinoPage(
           child: SuccessView(
+            countPushUps: (state.extra as Map)['count'],
+            time: (state.extra as Map)['time'],
           ),
         );
       },
@@ -56,8 +58,13 @@ class _NavigationServiceImpl implements NavigationService<Object> {
   }
 
   @override
-  void openSuccessPage() {
-    return config.pushReplacement('/success');
+  void openSuccessPage(String countPushUps, String time) {
+    return config.pushReplacement(
+      '/success',
+      extra: {
+        'count': countPushUps,
+        'time': time,
+      },
+    );
   }
-
 }

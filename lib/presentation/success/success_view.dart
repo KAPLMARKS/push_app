@@ -3,7 +3,11 @@ import '/presentation/presentation.dart';
 import 'success.dart';
 
 class SuccessView extends View<SuccessViewModel> {
-  const SuccessView({Key? key}) : super(successViewModelFactory, key: key);
+  const SuccessView({Key? key, required this.countPushUps, required this.time})
+      : super(successViewModelFactory, key: key);
+
+  final String countPushUps;
+  final String time;
 
   @override
   Widget build(BuildContext context, SuccessViewModel viewModel) {
@@ -40,12 +44,17 @@ class SuccessView extends View<SuccessViewModel> {
                     child: Center(
                       child: Column(
                         children: [
-                          const Text(
-                            '10',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                            ),
+                          ValueListenableBuilder<String>(
+                            valueListenable: viewModel.countPushUps,
+                            builder: (context, countPushUps, ___) {
+                              return Text(
+                                countPushUps,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                ),
+                              );
+                            },
                           ),
                           const Text(
                             'ОТЖИМАНИЙ',
@@ -56,10 +65,17 @@ class SuccessView extends View<SuccessViewModel> {
                           ),
                           const Spacer(),
                           Row(
-                            children: const [
-                              Text('Время'),
-                              Spacer(),
-                              Text('Скорость'),
+                            children: [
+                              ValueListenableBuilder<String>(
+                                valueListenable: viewModel.time,
+                                builder: (context, time, ___) {
+                                  return Text(
+                                    time,
+                                  );
+                                },
+                              ),
+                              const Spacer(),
+                              const Text('Скорость'),
                             ],
                           ),
                         ],
