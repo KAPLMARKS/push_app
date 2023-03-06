@@ -60,6 +60,11 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
 
   late final ModeConfiguration _configuration = view.configuration;
 
+  @override
+  void onCloseButtonPressed() {
+    _onFinish();
+  }
+
   void _stopwatchTimerCallback(Timer timer) {
     if (_configuration.mode == Mode.fixedTime) {
       final int seconds =
@@ -87,20 +92,10 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
     }
   }
 
-  @override
-  void onCloseButtonPressed() {
-    _navigationService.openSuccessPage(
-      _configuration.mode == Mode.fixedCount
-          ? (_configuration as FixedCountModeConfiguration).count
-          : _countPushUps,
-      Duration(seconds: _stopwatchTimer.tick),
-    );
-  }
-
   void _onFinish() {
     _navigationService.openSuccessPage(
       _configuration.mode == Mode.fixedCount
-          ? (_configuration as FixedCountModeConfiguration).count
+          ? (_configuration as FixedCountModeConfiguration).count - _countPushUps
           : _countPushUps,
       Duration(seconds: _stopwatchTimer.tick),
     );
@@ -108,6 +103,8 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
 
   @override
   void dispose() {
+    countPushUps.dispose();
+    time.dispose();
     _stopwatchTimer.cancel();
     _pushUpsImitationTimer.cancel();
   }
