@@ -16,6 +16,8 @@ abstract class PushUpsViewModel extends ViewModel<PushUpsView> {
   ValueListenable<String> get countPushUps;
 
   ValueListenable<String> get time;
+
+  void onCloseButtonPressed();
 }
 
 class _PushUpsViewModelImpl extends PushUpsViewModel {
@@ -83,6 +85,16 @@ class _PushUpsViewModelImpl extends PushUpsViewModel {
     if (_configuration is FixedCountModeConfiguration && _countPushUps == 0) {
       _onFinish();
     }
+  }
+
+  @override
+  void onCloseButtonPressed() {
+    _navigationService.openSuccessPage(
+      _configuration.mode == Mode.fixedCount
+          ? (_configuration as FixedCountModeConfiguration).count
+          : _countPushUps,
+      Duration(seconds: _stopwatchTimer.tick),
+    );
   }
 
   void _onFinish() {

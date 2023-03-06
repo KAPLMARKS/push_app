@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '/data/data.dart';
 import '/presentation/presentation.dart';
 
@@ -15,7 +17,7 @@ class PushUpsView extends View<PushUpsViewModel> {
           children: [
             Row(
               children: const [
-                Icon(CupertinoIcons.check_mark),
+                _CloseButton(),
                 Spacer(),
                 Icon(CupertinoIcons.volume_up),
               ],
@@ -61,6 +63,29 @@ class PushUpsView extends View<PushUpsViewModel> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CloseButton extends ViewComponent<PushUpsViewModel> {
+  const _CloseButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, PushUpsViewModel viewModel) {
+    return SizedBox(
+      height: 16,
+      width: 16,
+      child: CupertinoButton(
+        onPressed: viewModel.onCloseButtonPressed,
+        padding: EdgeInsets.zero,
+        borderRadius: BorderRadius.circular(120),
+        color: CupertinoTheme.of(context).scaffoldBackgroundColor,
+        child: Icon(
+          CupertinoIcons.clear,
+          size: 16,
+          color: CupertinoTheme.of(context).primaryColor,
         ),
       ),
     );
