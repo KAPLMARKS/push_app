@@ -173,23 +173,26 @@ class S {
     );
   }
 
-  /// `2`
-  String get countApproachesLabel {
+  /// `{approaches}`
+  String countApproachesLabel(int approaches) {
     return Intl.message(
-      '2',
+      '$approaches',
       name: 'countApproachesLabel',
       desc: '',
-      args: [],
+      args: [approaches],
     );
   }
 
-  /// `1:00`
-  String get timeBetweenApproachesLabel {
+  /// `{time}`
+  String timeBetweenApproachesLabel(DateTime time) {
+    final DateFormat timeDateFormat = DateFormat.ms(Intl.getCurrentLocale());
+    final String timeString = timeDateFormat.format(time);
+
     return Intl.message(
-      '1:00',
+      '$timeString',
       name: 'timeBetweenApproachesLabel',
       desc: '',
-      args: [],
+      args: [timeString],
     );
   }
 

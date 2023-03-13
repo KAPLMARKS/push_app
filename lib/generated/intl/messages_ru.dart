@@ -20,35 +20,38 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
-  static String m0(count) =>
+  static String m0(approaches) => "${approaches}";
+
+  static String m1(count) =>
       "${Intl.plural(count, one: 'РАЗ', two: 'РАЗА', other: 'Отхер')}";
 
-  static String m1(count) => "${count}\nРАЗ";
+  static String m2(count) => "${count}\nРАЗ";
 
-  static String m2(time) => "${time}";
+  static String m3(time) => "${time}";
+
+  static String m4(time) => "${time}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "approachLabel": MessageLookupByLibrary.simpleMessage("ПОДХОДА"),
         "approachesPart1Label":
             MessageLookupByLibrary.simpleMessage("В НЕСКОЛЬКО ПОДХОДОВ"),
-        "countApproachesLabel": MessageLookupByLibrary.simpleMessage("2"),
-        "countLabel": m0,
-        "countLabelWithParameter": m1,
+        "countApproachesLabel": m0,
+        "countLabel": m1,
+        "countLabelWithParameter": m2,
         "fixedTimeLabel": MessageLookupByLibrary.simpleMessage("10:00"),
         "homeFixedTimeModeDescription":
             MessageLookupByLibrary.simpleMessage("МИНУТ"),
         "homeFixedTimeModeLabel":
             MessageLookupByLibrary.simpleMessage("ХОЧУ ОТЖИМАТЬСЯ"),
-        "homeFixedTimeModeTime": m2,
+        "homeFixedTimeModeTime": m3,
         "pushUpFixedCountLabel": MessageLookupByLibrary.simpleMessage("10"),
         "pushUpFixedTimedLabel":
             MessageLookupByLibrary.simpleMessage("ОТЖИМАТЬСЯ"),
         "restLabel": MessageLookupByLibrary.simpleMessage("ОТДЫХ"),
         "staminaLabel": MessageLookupByLibrary.simpleMessage("НА ВЫНОСЛИВОСТь"),
         "statisticsLabel": MessageLookupByLibrary.simpleMessage("СТАТИСТИКА"),
-        "timeBetweenApproachesLabel":
-            MessageLookupByLibrary.simpleMessage("1:00"),
+        "timeBetweenApproachesLabel": m4,
         "trainingProgramLabel":
             MessageLookupByLibrary.simpleMessage("Программа Тренировок"),
         "wantLabel": MessageLookupByLibrary.simpleMessage("ХОЧУ")

@@ -6,8 +6,7 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
       : super(approachesModeViewModelFactory, key: key);
 
   @override
-  Widget build(
-      BuildContext context, ApproachesModeViewModel viewModel) {
+  Widget build(BuildContext context, ApproachesModeViewModel viewModel) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -17,15 +16,15 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
           children: [
             Column(
               children: [
-                Text(
-                  viewModel.countLabelWithParameter(context),
-                  textAlign: TextAlign.center,
+                ValueListenableBuilder<String>(
+                  valueListenable: viewModel.countPushUps,
+                  builder: (context, pushUps, ___) => Text(pushUps),
                 ),
                 Row(
                   children: [
                     BlurredButton(
                       padding: const EdgeInsets.all(5),
-                      onPressed: viewModel.onMinusButtonPressed,
+                      onPressed: viewModel.onCountMinusButtonPressed,
                       child: const Icon(
                         CupertinoIcons.minus,
                         size: 16,
@@ -33,7 +32,7 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
                     ),
                     BlurredButton(
                       padding: const EdgeInsets.all(5),
-                      onPressed: viewModel.onPlusButtonPressed,
+                      onPressed: viewModel.onCountPlusButtonPressed,
                       child: const Icon(
                         CupertinoIcons.plus,
                         size: 16,
@@ -46,13 +45,16 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
             const SizedBox(width: 16),
             Column(
               children: [
-                Text(viewModel.countApproachesLabel(context)),
+                ValueListenableBuilder<String>(
+                  valueListenable: viewModel.approaches,
+                  builder: (context, approaches, ___) => Text(approaches),
+                ),
                 Text(viewModel.approachLabel(context)),
                 Row(
                   children: [
                     BlurredButton(
                       padding: const EdgeInsets.all(5),
-                      onPressed: viewModel.onMinusButtonPressed,
+                      onPressed: viewModel.onApproachMinusButtonPressed,
                       child: const Icon(
                         CupertinoIcons.minus,
                         size: 16,
@@ -60,7 +62,7 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
                     ),
                     BlurredButton(
                       padding: const EdgeInsets.all(5),
-                      onPressed: viewModel.onMinusButtonPressed,
+                      onPressed: viewModel.onApproachPlusButtonPressed,
                       child: const Icon(
                         CupertinoIcons.plus,
                         size: 16,
@@ -73,13 +75,16 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
             const SizedBox(width: 16),
             Column(
               children: [
-                Text(viewModel.timeBetweenApproachesLabel(context)),
+                ValueListenableBuilder<String>(
+                  valueListenable: viewModel.time,
+                  builder: (context, time, ___) => Text(time),
+                ),
                 Text(viewModel.restLabel(context)),
                 Row(
                   children: [
                     BlurredButton(
                       padding: const EdgeInsets.all(5),
-                      onPressed: viewModel.onMinusButtonPressed,
+                      onPressed: viewModel.onTimeMinusButtonPressed,
                       child: const Icon(
                         CupertinoIcons.minus,
                         size: 16,
@@ -87,7 +92,7 @@ class ApproachesModeView extends View<ApproachesModeViewModel> {
                     ),
                     BlurredButton(
                       padding: const EdgeInsets.all(5),
-                      onPressed: viewModel.onPlusButtonPressed,
+                      onPressed: viewModel.onTimePlusButtonPressed,
                       child: const Icon(
                         CupertinoIcons.plus,
                         size: 16,

@@ -30,8 +30,25 @@
       }
     }
   },
-  "countApproachesLabel": "2",
-  "timeBetweenApproachesLabel": "1:00",
+  "countApproachesLabel": "{approaches}",
+  "@countApproachesLabel": {
+    "placeholders": {
+      "approaches": {
+        "type": "int"
+      }
+    }
+  },
+  "timeBetweenApproachesLabel": "{time}",
+  "@timeBetweenApproachesLabel": {
+    "placeholders": {
+      "time": {
+        "type": "DateTime",
+        "format": "ms",
+        "example": "1:00",
+        "description": "User selected time for trainings"
+      }
+    }
+  },
   "homeFixedTimeModeLabel": "ХОЧУ ОТЖИМАТЬСЯ",
   "homeFixedTimeModeDescription": "МИНУТ",
   "homeFixedTimeModeTime": "{time}",
